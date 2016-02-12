@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+/* div dengan nama paging */
+div.paging {
+    padding:2px;
+    margin:2px;
+    text-align:center;
+    font-family:Tahoma;
+    font-size:12px;
+    margin-top: 15px;
+    margin-left: 0px;
+}
+
+div.paging a {
+    padding:2px 6px;
+    margin-right:2px;
+    border:1px solid #9AAFE5;
+    text-decoration:none;
+    color:#2E6AB1;
+    background-position:bottom;
+}
+
+div.paging a:hover {
+    border:1px solid #2B66A5;
+    color:#000000;
+    background-color:#FFFF80;
+}
+
+div.paging span.curent {
+    padding:2px 5px 2px 5px;
+    margin-right:2px;
+    border:1px solid navy;
+    font-weight:bold;
+    background-color:#2E6AB1;
+    color:#FFFFFF;
+}
+
+div.paging span.disable {
+    padding:2px 5px 2px 5px;
+    margin-right:2px;
+    color:#6A6555;
+    border:1px solid #0061DE;
+    font-style: italic;
+}
+
+div.paging span.prevnext {
+    font-weight:bold;
+    font-style: italic;
+}
+
+div.paging span.prevnext a {
+    border:none;
+}
+
+div.paging span.prevnext a:hover {
+    border:1px solid #000000;
+    color:#0061DE;
+}
+
