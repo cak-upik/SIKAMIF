@@ -67,9 +67,6 @@ if ($act == 'del') {
                             <thead>
                             <th colspan="3">Data Kelas</th>
                             </thead>
-                            <tr> 
-                                <td colspan="3">NAMA KELAS</td>
-                            </tr>
                             <?php data_kelas(); ?>
                         </table>
                         <?php

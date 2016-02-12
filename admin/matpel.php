@@ -126,10 +126,6 @@ $thn_ajaran = $_REQUEST['tahun'];
                             <thead>
                             <th colspan="4">Mata Pelajaran</th>
                             </thead>
-                            <tr>
-                                <td align="center">NAMA MATA PELAJARAN</td>
-                                <td align="center" colspan="2">Aksi</td>
-                            </tr>
                                 <?php
                                 master_matpel($kls, $thn_ajaran);
                                 ?>

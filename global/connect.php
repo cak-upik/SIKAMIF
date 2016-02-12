@@ -2,8 +2,8 @@
     
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "Password1";
-$dbname = "wp";
+$dbpass = "root";
+$dbname = "simkul";
 
 mysql_connect($dbhost,$dbuser,$dbpass);
 mysql_select_db($dbname);    

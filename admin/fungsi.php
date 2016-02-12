@@ -200,9 +200,10 @@ function data_kelas() {
             $warna = "";
         ?>
         <tr bgcolor="<?php echo $warna; ?>">
-            <td><?php echo $row[ruang]; ?></td>
-            <td><a href="?act=edit&id=<?php echo $row[id]; ?>"><img src="images/edit_2.gif" alt="klik disini untuk Edit Data" border="0"></a></td>
-            <td><a href="?act=del&id=<?php echo $row[id]; ?>" onClick="return confirmdelete('Menghapus NAMA KELAS: <?php echo $string = strtoupper($row[ruang]); ?>');"><img src="images/delete.gif" alt="klik disini untuk Hapus Data" border="0"></a></td>
+            <td style="width:62%"><center><?php echo $row[ruang]; ?></center></td>
+            <td><a class="btn" href="?act=edit&id=<?php echo $row[id]; ?>"><i class="icon-edit"></i>Edit</a>
+            <a class="btn btn-danger" href="?act=del&id=<?php echo $row[id]; ?>" onClick="return confirm('Menghapus NAMA KELAS: <?php echo $string = strtoupper($row[ruang]); ?>');"><i class="icon-remove"></i>Hapus</a>
+			</td>
             <?php
         }
         mysql_free_result($hasil);
