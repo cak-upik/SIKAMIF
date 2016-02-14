@@ -1357,7 +1357,7 @@ from siswa where nis='$nis'";
                 <?php
 ############################# TAMBAH USER MANAGER ########################
 
-                function tambah_user($status, $username, $password) {
+                function tambah_user($status) {
                     ?>
                     <form name="frm_insert_ajaran" method="post" action="insert_usermanager.php">
                         <input type="hidden" name="status" value="<?php echo $status; ?>">
@@ -1381,11 +1381,11 @@ from siswa where nis='$nis'";
                             </tr>
                             <tr>
                                 <td>USERNAME</td>
-                                <td><input name="username" type="text" class="input-medium" value="<?php echo $username; ?>" maxlength="10"></td>
+                                <td><input name="username" type="text" class="input-medium" maxlength="10"></td>
                             </tr>
                             <tr>
                                 <td>PASSWORD</td>
-                                <td><input name="password" type="password" class="input-medium" value="<?php echo $password; ?>" maxlength="10"></td>
+                                <td><input name="password" type="password" class="input-medium" maxlength="10"></td>
                             </tr>
                             <tr>
                                 <td colspan="4"><input name="Submit22" type="image" value="Submit" src="images/simpan.gif" alt="klik disini untuk Simpan Data">

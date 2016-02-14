@@ -14,7 +14,6 @@ $row_ta2 = mysql_fetch_array($hasil_ta2);
 $qry_matpel = mysql_query("select kelas,tahun_ajaran from matpel order by id_matpel desc limit 1,1");
 $row_matpel = mysql_fetch_array($qry_matpel);
 ?>
-
 <div id="sidebar" class="sidebar responsive">
     <script type="text/javascript">
         try {
@@ -25,7 +24,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
 
     <ul class="nav nav-list">
         <li class="active">
-            <a href="index.php">
+            <a href="index.php?p=0">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text"> Dashboard </span>
             </a>
@@ -41,37 +40,37 @@ $row_matpel = mysql_fetch_array($qry_matpel);
 
             <b class="arrow"></b>
 
-            <ul class="submenu">
+            <ul id="menu" class="submenu">
                 <li class="">
-                    <a href="tahun_ajaran.php">
+                    <a href="index.php?p=1">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Data Tahun Ajaran
                     </a>
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="data_kelas.php">
+                    <a href="index.php?p=2">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Data Kelas
                     </a>
                     <b class="arrow"></b>
                 </li>
-                <li class="">
-                    <a href="data_siswa.php">
+                <li id="siswa" class="">
+                    <a href="index.php?p=3">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Data Siswa
                     </a>
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="data_guru.php">
+                    <a href="index.php?p=4">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Data Guru
                     </a>
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="matpel.php?kelas=<?php echo $row_matpel[kelas]; ?>&tahun=<?php echo $row_matpel[tahun_ajaran]; ?>">
+                    <a href="index.php?p=5&kelas=<?php echo $row_matpel[kelas]; ?>&tahun=<?php echo $row_matpel[tahun_ajaran]; ?>">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Data Mata Pelajaran
                     </a>
@@ -92,7 +91,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
 
             <ul class="submenu">
                 <li class="">
-                    <a href="data_matpel.php?kelas=1&tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>">
+                    <a href="index.php?p=6&kelas=1&tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Input SKBM
                     </a>
@@ -100,7 +99,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
                 </li>
 
                 <li class="">
-                    <a href="wali_kelas.php?tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>">
+                    <a href="index.php?p=7&tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Wali Kelas
                     </a>
@@ -108,7 +107,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
                 </li>
 
                 <li class="">
-                    <a href="jadwal_pelajaran.php?tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>&hari=SENIN&kelas_id=<?php echo $row_kelas[id]; ?>">
+                    <a href="index.php?p=8&tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>&hari=SENIN&kelas_id=<?php echo $row_kelas[id]; ?>">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Jadwal Pelajaran
                     </a>
@@ -116,7 +115,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
                 </li>
 
                 <li class="">
-                    <a href="penempatan_kelas.php?tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>&kelas_id=<?php echo $row_kelas[id]; ?>">
+                    <a href="index.php?p=9&tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>&kelas_id=<?php echo $row_kelas[id]; ?>">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Penempatan Kelas
                     </a>
@@ -124,7 +123,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
                 </li>
 
                 <li class="">
-                    <a href="input_nilai.php?tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>&kelas_id=<?php echo $row_kelas[id]; ?>&semester=1">
+                    <a href="index.php?p=10&tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>&kelas_id=<?php echo $row_kelas[id]; ?>&semester=1">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Input Nilai
                     </a>
@@ -145,7 +144,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
 
             <ul class="submenu">
                 <li class="">
-                    <a href="laporan_nilai.php?tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>&kelas_id=<?php echo $row_kelas[id]; ?>&semester=1">
+                    <a href="index.php?p=11&tahun_ajaran=<?php echo $row_ta[tahun_ajaran]; ?>&kelas_id=<?php echo $row_kelas[id]; ?>&semester=1">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Laporan Nilai
                     </a>
@@ -174,7 +173,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
 
             <ul class="submenu">
                 <li class="">
-                    <a href="user_manager.php?status=1">
+                    <a href="index.php?p=12&status=1">
                         <i class="menu-icon fa fa-caret-right"></i>
                         User Management
                     </a>
@@ -182,7 +181,7 @@ $row_matpel = mysql_fetch_array($qry_matpel);
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="profil_sekolah.php">
+                    <a href="index.php?p=13">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Profile Website
                     </a>

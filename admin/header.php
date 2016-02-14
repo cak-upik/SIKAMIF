@@ -17,7 +17,7 @@ $row = mysql_fetch_array($hasil);
     </button>
 
     <div class="navbar-header pull-left">
-        <a href="index.php" class="navbar-brand">
+        <a href="index.php?p=0" class="navbar-brand">
             <small>
                 <i class="fa fa-building"></i>
                 Sistem Informasi Akademik <?php echo $row['NAMA']; ?>

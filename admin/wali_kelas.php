@@ -15,14 +15,14 @@ if ($act == 'del') {
     <head>
         <title>Wali Kelas</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
+<!--    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
         <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
         <link href="../bootstrap/css/style.css" rel="stylesheet"/>
         <script src="../bootstrap/js/jquery-1.7.2.min.js"></script>
-        <script src="../bootstrap/js/bootstrap-dropdown.js"></script>
+        <script src="../bootstrap/js/bootstrap-dropdown.js"></script> -->
         <script language="JavaScript"  src="../global/jscript.js" type="text/javascript"></script>
         <script language="JavaScript"  src="../global/jscript_pop.js" type="text/javascript"></script>
-        <script type="text/javascript" src="../bootstrap/js/jquery.js"></script>
+<!--        <script type="text/javascript" src="../bootstrap/js/jquery.js"></script>
         <script type="text/javascript" src="../bootstrap/js/styletable.jquery.plugin.js"></script>
         <script language="JavaScript">
             $(document).ready(function() {
@@ -36,20 +36,12 @@ if ($act == 'del') {
                     tr_hover_bgcolor: '#BCD4EC'
                 });
             });
-        </script>
+        </script> -->
     </head>
 
     <body>
-        <!-- Header -->        
-        <?php include_once './header.php'; ?>        
-        <!-- End Header -->
-
         <div class="container-fluid">
             <div class="row-fluid">
-                <!-- Left -->
-                <?php include_once './left.php'; ?>
-                <!-- end left -->
-
                 <!-- Content -->  
                 <div class="span10">                    
                     <div class="row-fluid">
@@ -112,9 +104,6 @@ if ($act == 'del') {
                 </div>
                 <!-- end content -->
             </div>
-            <!-- Footer -->
-            <?php include_once './footer.php'; ?>
-            <!-- end left -->
         </div>
 
     </body>
