@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-require_once "fungsi.php";
+include "fungsi.php";
 $id = $_REQUEST['id'];
 $act = $_REQUEST['act'];
 $tahun_kurikulum1 = $_REQUEST['tahun_kurikulum1'];
