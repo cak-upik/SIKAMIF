@@ -13,63 +13,64 @@ if ($act == 'del') {
     mysql_query("delete from jadwal where id_kelas='$id'");
 }
 ?>
-<html>
-    <head>
-        <title>Data Kelas</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<!--        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
-        <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
-        <link href="../bootstrap/css/style.css" rel="stylesheet"/>
-        <script src="../bootstrap/js/jquery-1.7.2.min.js"></script>
-        <script src="../bootstrap/js/bootstrap-dropdown.js"></script>
-        <script type="text/javascript" src="../bootstrap/js/jquery.js"></script>
-        <script type="text/javascript" src="../bootstrap/js/styletable.jquery.plugin.js"></script>
-        <script language="JavaScript">
-            $(document).ready(function() {
-                $('table').styleTable({
-                    th_bgcolor: '#3E83C9',
-                    th_color: '#ffffff',
-                    th_border_color: '#333333',
-                    tr_odd_bgcolor: '#ECF6FC',
-                    tr_even_bgcolor: '#ffffff',
-                    tr_border_color: '#95BCE2',
-                    tr_hover_bgcolor: '#BCD4EC'
-                });
-            });
-        </script> -->
-    </head>
 
-    <body>
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <!-- Content -->  
-                <div class="span8">
-                    <div class="row-fluid">
-                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?act=tambah" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>Tambah</a>
-                    </div>
-                    <?php
-                    if ($act == 'tambah') {
-                        tambah_kelas($kelas);
-                    } elseif ($act == 'edit') {
-                        edit_kelas($id);
-                    } else {
-                        ?>
-                        <br/>
-                        <table class="table-bordered" style="width: 50%;">
-                            <thead>
-                            <th colspan="3">Data Kelas</th>
-                            </thead>
-                            <?php data_kelas(); ?>
-                        </table>
-                        <?php
-                    }
-                    ?>
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Master</a>
+        </li>
+        <li class="active">Data Kelas</li>
+    </ul><!-- /.breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            Data Kelas
+        </h1>
+    </div><!-- /.page-header -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="clearfix">
+                <div class="pull-left tableTools-container">
+                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?act=tambah" class="btn btn-primary"><i class="fa fa-plus-square"></i> Tambah</a>
                 </div>
             </div>
-            <!-- end content -->
-            <!-- end left -->
+            <!-- div.table-responsive -->
+            <!-- div.dataTables_borderWrap -->
+            <div>
+                <?php
+                if ($act == 'tambah') {
+                    tambah_kelas($kelas);
+                } elseif ($act == 'edit') {
+                    edit_kelas($id);
+                } else {
+                    ?>
+                    <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Data Kelas</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php data_kelas(); ?>
+                        </tbody>
+                    </table>
+                    <?php
+                }
+                ?>
+            </div>
         </div>
-
-    </body>
-</html>
-
+    </div>
+</div>

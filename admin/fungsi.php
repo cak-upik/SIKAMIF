@@ -1,6 +1,6 @@
 <?php
-session_start();
-include "../global/config.php";
+//session_start();
+include "../global/connect.php";
 
 #################################### FUNGSI PROFIL SEKOLAH #######################################
 
@@ -75,7 +75,7 @@ function edit_profil($id) {
                 <td>:</td>
                 <td><input name="email" type="text" class="input-xlarge" value="<?php echo $row[EMAIL]; ?>"></td>
             </tr>
-<tr>
+            <tr>
                 <td>TENTANG SEKOLAH</td>
                 <td>:</td>
                 <td><textarea name="about" rows="8" class="span10"><?php echo $row[ABOUT]; ?></textarea>
@@ -104,10 +104,21 @@ function tahun_ajaran() {
         else
             $warna = "";
         ?>
-        <tr bgcolor="<?php echo $warna; ?>">
-            <td align="center" height="25"><?php echo $row[tahun_ajaran]; ?></td>
-            <td align="center" width="30" ><a href="?act=edit&id=<?php echo $row[id]; ?>"><img src="images/edit_2.gif" alt="klik disini untuk Edit Data" border="0"></a></td>
-            <td align="center" width="30"><a href="?act=del&id=<?php echo $row[id]; ?>" onClick="return confirmdelete('Menghapus TAHUN AJARAN: <?php echo $string = strtoupper($row[tahun_ajaran]); ?>');"><img src="images/delete.gif" alt="klik disini untuk Hapus Data" border="0"></a></td>
+        <tr>
+            <td>
+                <?php echo $row['tahun_ajaran']; ?>
+            </td>
+            <td>
+                <div class="hidden-sm hidden-xs action-buttons">
+                    <a class="green" href="?act=edit&id=<?php echo $row['id']; ?>">
+                        <i class="ace-icon fa fa-pencil bigger-130"></i> Edit
+                    </a>
+
+                    <a class="red" href="?act=del&id=<?php echo $row['id']; ?>" onClick="return confirmdelete('Menghapus TAHUN AJARAN: <?php echo $string = strtoupper($row[tahun_ajaran]); ?>');">
+                        <i class="ace-icon fa fa-trash-o bigger-130"></i> Delete
+                    </a>
+                </div>
+            </td>
         </tr>
         <?php
     }
@@ -199,22 +210,33 @@ function data_kelas() {
         else
             $warna = "";
         ?>
-        <tr bgcolor="<?php echo $warna; ?>">
-            <td style="width:62%"><center><?php echo $row[ruang]; ?></center></td>
-            <td><a class="btn" href="?act=edit&id=<?php echo $row[id]; ?>"><i class="icon-edit"></i>Edit</a>
-            <a class="btn btn-danger" href="?act=del&id=<?php echo $row[id]; ?>" onClick="return confirm('Menghapus NAMA KELAS: <?php echo $string = strtoupper($row[ruang]); ?>');"><i class="icon-remove"></i>Hapus</a>
-			</td>
-            <?php
-        }
-        mysql_free_result($hasil);
-    }
-    ?>
+        <tr>
+            <td>
+                <?php echo $row['tahun_ajaran']; ?>
+            </td>
+            <td>
+                <div class="hidden-sm hidden-xs action-buttons">
+                    <a class="green" href="?act=edit&id=<?php echo $row['ruang']; ?>">
+                        <i class="ace-icon fa fa-pencil bigger-130"></i> Edit
+                    </a>
 
-    <?php
+                    <a class="red" href="?act=del&id=<?php echo $row['id']; ?>" onClick="return confirmdelete('Menghapus NAMA KELAS: <?php echo $string = strtoupper($row['ruang']); ?>');">
+                        <i class="ace-icon fa fa-trash-o bigger-130"></i> Delete
+                    </a>
+                </div>
+            </td>
+        </tr>
+        <?php
+    }
+    mysql_free_result($hasil);
+}
+?>
+
+<?php
 ######################## TAMBAH DATA KELAS ########################
 
-    function tambah_kelas($kelas) {
-        ?>
+function tambah_kelas($kelas) {
+    ?>
     <br/>
     <form name="frm_kelas" method="post" action="insert_kelas.php">
         <table class="table-bordered" style="width: 30%;">
@@ -310,11 +332,20 @@ function data_guru($key, $kategori) {
         else
             $warna = "";
         ?>
-        <trbgcolor="<?php echo $warna; ?>">
-            <td align="center"><a href="#" onClick='Popreport_look_guru("detil_guru.php?id=<?php echo $row[id]; ?>")' class="link2"><?php echo $row[nip]; ?></a></td>
+        <tr bgcolor="<?php echo $warna; ?>">
+            <td><a href="#" onClick='Popreport_look_guru("detil_guru.php?id=<?php echo $row[id]; ?>")' class="link2"><?php echo $row[nip]; ?></a></td>
             <td><?php echo $nama_dosen; ?></td>
-            <td align="center" width="30" ><a href="?act=edit&id=<?php echo $row[id]; ?>"><img src="images/edit_2.gif" alt="klik disini untuk Edit Data" border="0"></a></td>
-            <td align="center" width="30"><a href="?act=del&id=<?php echo $row[id]; ?>" onClick="return confirmdelete('Menghapus NAMA DOSEN: <?php echo $string = strtoupper($nama_dosen); ?>');"><img src="images/delete.gif" alt="klik disini untuk Hapus Data" border="0"></a></td>
+            <td>
+                <div class="hidden-sm hidden-xs action-buttons">
+                    <a class="green" href="?act=edit&id=<?php echo $row[id]; ?>">
+                        <i class="ace-icon fa fa-pencil bigger-130"></i> 
+                    </a>
+
+                    <a class="red" href="?act=del&id=<?php echo $row[id]; ?>" onClick="return confirmdelete('Menghapus NAMA DOSEN: <?php echo $string = strtoupper($nama_dosen); ?>');">
+                        <i class="ace-icon fa fa-trash-o bigger-130"></i> 
+                    </a>
+                </div>
+            </td>
         </tr>
         <?php
     }
@@ -588,7 +619,7 @@ function data_matpel($kelas, $tahun_ajaran) {
     mysql_free_result($hasil);
 }
 ?>
-        
+
 <?php
 ############################ TAMBAH DATA MATA PELAJARAN ######################
 
@@ -734,10 +765,19 @@ function data_siswa($key, $kategori, $perlihat) {
         ?>
         <tr bgcolor="<?php echo $warna; ?>">
             <td><a href="#" onClick='Popreport_look_siswa("detil_siswa.php?nis=<?php echo $row[nis]; ?>");' class="link2"><?php echo $row[nis]; ?></a></td>
-            <td><?php echo $row[nama_lengkap]; ?></td>
-<td><?php echo $row[kelas]; ?></td>
-            <td><a href="?act=edit&nis=<?php echo $row[nis]; ?>&perlihat=<?php echo $perlihat; ?>"><img src="images/edit_2.gif" alt="klik disini untuk Edit Data" border="0"></a></td>
-            <td><a href="?act=del&nis=<?php echo $row[nis]; ?>" onClick="return confirmdelete('Menghapus NAMA SISWA: <?php echo $string = strtoupper($row[nama_lengkap]); ?>');"><img src="images/delete.gif" alt="klik disini untuk Hapus Data" border="0"></a></td>
+            <td><?php echo $row['nama_lengkap']; ?></td>
+            <td><?php echo $row['kelas']; ?></td>
+            <td>
+                <div class="hidden-sm hidden-xs action-buttons">
+                    <a class="green" href="?act=edit&nis=<?php echo $row[nis]; ?>&perlihat=<?php echo $perlihat; ?>">
+                        <i class="ace-icon fa fa-pencil bigger-130"></i> 
+                    </a>
+
+                    <a class="red" href="?act=del&nis=<?php echo $row[nis]; ?>" onClick="return confirmdelete('Menghapus NAMA SISWA: <?php echo $string = strtoupper($row[nama_lengkap]); ?>');">
+                        <i class="ace-icon fa fa-trash-o bigger-130"></i> 
+                    </a>
+                </div>
+            </td>
         </tr>
         <?php
     }
@@ -1303,20 +1343,48 @@ from siswa where nis='$nis'";
                     else
                         $warna = "";
                     ?>
-            <tr  bgcolor="<?php echo $warna; ?>">
-                <td height="25"><?php echo $row[LOGIN]; ?></td>
-                <td align="center"><?php
-                    if ($row[AKTIF] == '1')
-                        echo "<img src=images/tick.png>";
-                    else
-                        echo "<img src=images/cancel.png>";
-                    ?>
+            <tr>
+                <td>
+                    <?php echo $row['LOGIN']; ?>
                 </td>
-                <td align="center"><?php echo $row[LAST_LOGIN]; ?></td>
-                <td align="center" width="30"><a href="?act=edit&status=<?php echo $status; ?>&key=<?php echo $key; ?>&id=<?php echo $row[ID]; ?>"><img src="images/edit_2.gif" alt="klik disini untuk Edit Data" border="0"></a></td>
-                <td align="center" width="30"><a href="?act=del&status=<?php echo $status; ?>&key=<?php echo $key; ?>&id=<?php echo $row[ID]; ?>" onClick="return confirmdelete('Menghapus USERNAME: <?php echo $row[LOGIN]; ?>');"><img src="images/delete.gif" alt="klik disini untuk Hapus Data" border="0"></a></td>
-                <td align="center" width="30"><a href="?act=set&status=<?php echo $status; ?>&key=<?php echo $key; ?>&id=<?php echo $row[ID]; ?>&aktif=<?php echo $row[AKTIF]; ?>"><img src="images/lock.png" alt="klik disini untuk set Aktif atau Non-Aktif User" border="0"></a></td>
+                <td>
+                    <?php
+                    if ($row[AKTIF] == '1')
+                        $icon = "fa fa-check";
+                    else
+                        $icon = "";
+                    ?>
+                    <div class="hidden-sm hidden-xs action-buttons center">
+                        <a class="block" href="#">
+                            <i class="ace-icon <?php echo $icon; ?> bigger-130"></i> 
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <?php echo $row['LAST_LOGIN']; ?>
+                </td>
+                <td>
+                    <div class="hidden-sm hidden-xs action-buttons">
+                        <a class="green" href="?act=edit&status=<?php echo $status; ?>&key=<?php echo $key; ?>&id=<?php echo $row['ID']; ?>">
+                            <i class="ace-icon fa fa-pencil bigger-130"></i> 
+                        </a>
+
+                        <a class="red" href="?act=del&id=<?php echo $row['id']; ?>" onClick="return confirmdelete('Menghapus USERNAME: <?php echo $row['LOGIN']; ?>');">
+                            <i class="ace-icon fa fa-trash-o bigger-130"></i> 
+                        </a>
+                        <?php
+                        if ($row['AKTIF'] == '1')
+                            $color = "blue";
+                        else
+                            $color = "yellow";
+                        ?>
+                        <a class="<?php echo $color; ?>" href="?act=set&status=<?php echo $status; ?>&key=<?php echo $key; ?>&id=<?php echo $row['ID']; ?>&aktif=<?php echo $row['AKTIF']; ?>" onClick="return confirmdelete('Menghapus TAHUN AJARAN: <?php echo $string = strtoupper($row[tahun_ajaran]); ?>');">
+                            <i class="ace-icon fa fa-key bigger-130"></i> 
+                        </a>
+                    </div>
+                </td>
             </tr>
+
             <?php
         }
         mysql_free_result($lihat);

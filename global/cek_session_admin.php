@@ -1,7 +1,7 @@
 <?php
 
-session_start();
-include "config.php";
+//session_start();
+include "connect.php";
 
 $username = $_SESSION['username'];
 $passuser = $_SESSION['password'];

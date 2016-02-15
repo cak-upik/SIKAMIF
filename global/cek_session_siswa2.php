@@ -1,11 +1,11 @@
 <?php
 
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-session_start();
+//session_start();
 $nameuser = $_SESSION['nameuser'];
 $passuser = $_SESSION['passuser'];
 $tipe = $_SESSION['tipe'];
-include "config.php";
+include "./connect.php.php";
 
 $perintah = "select login,pwd,tipe from usermanager where login='$nameuser' and pwd='$passuser' and tipe='$tipe'";
 $hasil = mysql_query($perintah);

@@ -50,94 +50,75 @@ if ($act == 'del') {
     mysql_query("delete from usermanager where login='$nis'");
 }
 ?>
-<html>
-    <head>
-        <title>Data Siswa</title>
-<!--        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
-        <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
-        <link href="../bootstrap/css/style.css" rel="stylesheet"/> 
-        <script src="../bootstrap/js/jquery-1.7.2.min.js"></script>
-        <script src="../bootstrap/js/bootstrap-dropdown.js"></script> -->
-        <script language="JavaScript"  src="../global/jscript.js" type="text/javascript"></script>
-        <script language="JavaScript"  src="../global/jscript_pop.js" type="text/javascript"></script>
-<!--        <script type="text/javascript" src="../bootstrap/js/jquery.js"></script> 
-        <script type="text/javascript" src="../bootstrap/js/styletable.jquery.plugin.js"></script>
-        <script language="JavaScript">
-            $(document).ready(function() {
-                $('table').styleTable({
-                    th_bgcolor: '#3E83C9',
-                    th_color: '#ffffff',
-                    th_border_color: '#333333',
-                    tr_odd_bgcolor: '#ECF6FC',
-                    tr_even_bgcolor: '#ffffff',
-                    tr_border_color: '#95BCE2',
-                    tr_hover_bgcolor: '#BCD4EC'
-                });
-            });
-        </script> -->
-    </head>
+<script language="JavaScript"  src="../global/jscript.js" type="text/javascript"></script>
+<script language="JavaScript"  src="../global/jscript_pop.js" type="text/javascript"></script>
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {
+        }
+    </script>
 
-    <body>
-        <!-- Header -->        
-       <?php // include_once './header.php'; ?>
-        <!-- End Header -->
-
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <!-- Left -->
-                <?php // include_once './left.php'; ?>
-                <!-- end left -->
-
-                <!-- Content -->  
-                <div class="span10">
-                    <div class="row-fluid">
-                        <?php
-                        if ($act == 'tambah') {
-                            tambah_siswa($nis, $nama_lengkap, $nama_panggilan, $alamat, $telp_rumah, $telp_hp, $tempat_lahir, $tgl_lahir, $sex, $agama, $nomor_induk, $anak_ke, $status, $jenis_ijazah, $tahun_ijazah, $nomor_ijazah, $nama_ayah, $pekerjaan_ayah, $alamat_ayah, $telp_rumah_ayah, $telp_hp_ayah, $nama_ibu, $pekerjaan_ibu, $alamat_ibu, $telp_rumah_ibu, $telp_hp_ibu, $nama_wali, $pekerjaan_wali, $alamat_wali, $telp_rumah_wali, $telp_hp_wali, $catatan_lain, $foto, $aktif, $tahun, $bulan, $tgl);
-                        } elseif ($act == 'edit') {
-                            edit_siswa($nis, $perlihat);
-                        } else {
-                            ?>
-                            <img src="images/user.png" width="48" height="48" border="1">
-                            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?act=tambah" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>Tambah</a>
-                        </div>
-
-                        <br/>
-                        <form name="cari_guru" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                            <table class="table-bordered">
-                                <tr> 
-                                    <td>Cari Berdasarkan :</td>
-                                    <td><select name="kategori"
-                                                <option value="NIS" <?php if ($kategori == 'NIS') echo "SELECTED"; ?>>NIS</option>
-                                            <option value="NAMA" <?php if ($kategori == 'NAMA') echo "SELECTED"; ?>>NAMA</option>
-                                        </select></td>
-                                    <td>Masukkan Kata :</td>
-                                    <td><input type="text" name="key" class="inputlogin" size="30" value="<?php echo $key; ?>">
-                                        <input name="Submit" type="image" value="Submit" src="images/cari.gif" alt="klik disini untuk melakukan Pencarian Siswa"></td>
-                                </tr>
-                            </table>
-                        </form>
-                        <table class="table-bordered">
-                            <thead> 
-                            <th>NIS</th>
-                            <th>NAMA</th>
-                            <th colspan="3">AKSI</th>
-                            </tr>
-                            <?php
-                            data_siswa($key, $kategori, $perlihat);
-                            ?>
-                        </table>
-                        <?php
-                    }
-                    ?>
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Master</a>
+        </li>
+        <li class="active">Data Siswa</li>
+    </ul><!-- /.breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            Data Siswa
+        </h1>
+    </div><!-- /.page-header -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="clearfix">
+                <div class="pull-left tableTools-container">
                 </div>
             </div>
-            <!-- end content -->
-            <!-- Footer -->
-            <?php // include_once './footer.php'; ?>
-            <!-- end left -->
+            <?php
+            if ($act == 'tambah') {
+                tambah_siswa($nis, $nama_lengkap, $nama_panggilan, $alamat, $telp_rumah, $telp_hp, $tempat_lahir, $tgl_lahir, $sex, $agama, $nomor_induk, $anak_ke, $status, $jenis_ijazah, $tahun_ijazah, $nomor_ijazah, $nama_ayah, $pekerjaan_ayah, $alamat_ayah, $telp_rumah_ayah, $telp_hp_ayah, $nama_ibu, $pekerjaan_ibu, $alamat_ibu, $telp_rumah_ibu, $telp_hp_ibu, $nama_wali, $pekerjaan_wali, $alamat_wali, $telp_rumah_wali, $telp_hp_wali, $catatan_lain, $foto, $aktif, $tahun, $bulan, $tgl);
+            } elseif ($act == 'edit') {
+                edit_siswa($nis, $perlihat);
+            } else {
+                ?>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?act=tambah" class="btn btn-primary"><i class="fa fa-plus-square"></i> Tambah</a>
+                <form name="cari_guru" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                        <tr> 
+                            <td>Cari Berdasarkan :</td>
+                            <td><select name="kategori"
+                                        <option value="NIS" <?php if ($kategori == 'NIS') echo "SELECTED"; ?>>NIS</option>
+                                    <option value="NAMA" <?php if ($kategori == 'NAMA') echo "SELECTED"; ?>>NAMA</option>
+                                </select></td>
+                            <td>Masukkan Kata :</td>
+                            <td><input type="text" name="key" class="inputlogin" size="30" value="<?php echo $key; ?>">
+                                <button name="Submit" type="submit" class="btn btn-grey"><i class="fa fa-search"></i> Cari</button></td>
+                        </tr>
+                    </table>
+                </form>
+                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                    <thead> 
+                    <th>NIS</th>
+                    <th>NAMA</th>
+                    <th>KELAS</th>
+                    <th>AKSI</th>
+                    </thead>
+                    <?php
+                    data_siswa($key, $kategori, $perlihat);
+                    ?>
+                </table>
+                <?php
+            }
+            ?>
         </div>
-
-    </body>
-</html>
+    </div>
+</div>
